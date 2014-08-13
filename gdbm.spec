@@ -1,7 +1,7 @@
 Summary:	GNU database library for C
 Name:		gdbm
 Version:	1.11
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	ftp://ftp.gnu.org/pub/gnu/gdbm/%{name}-%{version}.tar.gz
