@@ -1,11 +1,12 @@
 Summary:	GNU database library for C
 Name:		gdbm
 Version:	1.11
-Release:	2
+Release:	3
 License:	GPL
 Group:		Libraries
 Source0:	ftp://ftp.gnu.org/pub/gnu/gdbm/%{name}-%{version}.tar.gz
 # Source0-md5:	72c832680cf0999caedbe5b265c8c1bd
+Patch0:		%{name}-zeroheaders.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -31,6 +32,8 @@ using the gdbm database.
 
 %prep
 %setup  -q
+# https://bugzilla.redhat.com/show_bug.cgi?id=4457
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -69,12 +72,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gdbm_dump
 %attr(755,root,root) %{_bindir}/gdbm_load
 %attr(755,root,root) %{_bindir}/gdbmtool
-
 %attr(755,root,root) %ghost %{_libdir}/libgdbm.so.?
 %attr(755,root,root) %ghost %{_libdir}/libgdbm_compat.so.?
 %attr(755,root,root) %{_libdir}/libgdbm.so.*.*.*
 %attr(755,root,root) %{_libdir}/libgdbm_compat.so.*.*.*
-
 %{_mandir}/man1/gdbm_dump.1*
 %{_mandir}/man1/gdbm_load.1*
 %{_mandir}/man1/gdbmtool.1*
